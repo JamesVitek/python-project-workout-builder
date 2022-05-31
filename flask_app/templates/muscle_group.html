@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muscle Groups</title>
+    <!-- <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='css/main.css') }}"> -->
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+    <div class="container">
+        <header class="flex padding">
+            <!-- Headder of Page -->
+            <div>
+                <h1>Muscle Groups</h1>
+                <h2>Hello
+                {% if current_user %}
+                    {{current_user.first_name}}
+                {% endif %}
+                !</h2>
+            </div>
+            <div class="flex margin">
+                {% if current_user %}
+                    <form action="/workout_session">
+                        <input class="button click margin" type="submit" value="Workout Session">
+                    </form>
+                    <form action="/logout">
+                        <input type="submit" name="Logout" value="Logout" class="button click margin">
+                    </form>
+                {% else %}
+                    <form action="/login_page">
+                        <input type="submit" name="login" value="Login" class="button click margin">
+                    </form>
+                {% endif %}
+            </div>
+        </header>
+        <!-- Body Two Flex boxes -->
+        <div class="flex padding">
+            <!--  Categories -->
+            <div class="column1">
+                <h2><a href="/categories_page">Categories</a></h2>
+                <div>
+                    <ul>
+                        {% if session["type"] == "Chest" %}
+                            <li class="selected">Chest</li>
+                        {% else %}
+                            <li><a href="/muscle_group/Chest">Chest</a></li>
+                        {% endif %}
+
+                        {% if session["type"] == "Back" %}
+                            <li class="selected">Back</li>
+                        {% else %}
+                            <li><a href="/muscle_group/Back">Back</a></li>
+                        {% endif %}
+
+                        {% if session["type"] == "Legs" %}
+                            <li class="selected">Legs</li>
+                        {% else %}
+                            <li><a href="/muscle_group/Legs">Legs</a></li>
+                        {% endif %}
+
+                        {% if session["type"] == "Arms" %}
+                            <li class="selected">Arms</li>
+                        {% else %}
+                            <li><a href="/muscle_group/Arms">Arms</a></li>
+                        {% endif %}
+
+                        {% if session["type"] == "Core" %}
+                        <li class="selected">Core</li>
+                        {% else %}
+                            <li><a href="/muscle_group/Core">Core</a></li>
+                        {% endif %}
+
+                        {% if session["type"] == "Shoulders" %}
+                            <li class="selected">Shoulders</li>
+                        {% else %}
+                            <li><a href="/muscle_group/Shoulders">Shoulders</a></li>
+                        {% endif %}
+
+                        {% if session["type"] == "Cardio" %}
+                            <li class="selected">Cardio</li>
+                        {% else %}
+                            <li><a href="/muscle_group/Cardio">Cardio</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+            <!-- Workouts in category -->
+            <div class="column2">
+                {% for exercise in muscle_group %}
+                    <div class="flex box">
+                        <div>
+                            <img src="/static/img/{{exercise['type']}}/{{exercise['image']}}" style="width:300px;height:300px;">
+                        </div>
+                        <div>
+                            <p>Exercise:</p>
+                            <p>{{exercise["name"]}}</p>
+                            {% if current_user %}
+                                    {% if session["type"] == "Cardio" %}
+                                        <div class="flex">
+                                            <p>Time:</p><input type="number" name="time">
+                                        </div>
+                                    {% else %}
+                                    <form action="/add_workout_to_plan/{{exercise.id}}" method="post">
+                                            <div class="flex">
+                                                <p>Sets:</p><input type="number" name="sets">
+                                            </div>
+                                            <div class="flex">
+                                                <p>Reps:</p><input type="number" name="reps">
+                                            </div>
+                                        <input type="submit" value="Add to Workout Plan" class="button click margin">
+                                    </form>
+                                    {% endif %}
+                            {% else %}
+                            <p>Please Register/Login to build a workout</p>
+                            <form action="/login_page">
+                                <input type="submit" name="login" value="Register/ Login" class="button click margin">
+                            </form>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <footer>
+            <form action="/add_workout">
+                <input class="button click margin" type="submit" value="Add A Workout">
+            </form>
+        </footer>
+    </div>
+</body>
+</html>

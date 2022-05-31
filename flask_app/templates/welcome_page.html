@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <!-- <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='css/main.css') }}"> -->
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+    <div class="container">
+        <header class="flex padding">
+            <!-- Headder of Page -->
+            <div>
+                <h1>Welcome Page</h1>
+            </div>
+        </header>
+        <h2><a href="/categories" class="main_page">Categories</a></h2>
+        
+        <form action="/login_page">
+            <input class="main_page" type="submit" name="login" value="Login">
+        </form>
+    </div>
+</body>
+</html>

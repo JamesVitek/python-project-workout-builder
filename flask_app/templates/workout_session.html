@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Session</title>
+    <!-- <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='css/main.css') }}"> -->
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+    <div class="container">
+        <header class="flex padding">
+            <!-- Headder of Page -->
+            <div>
+                <h1>Session</h1>
+                <h2>Workout
+                {% if current_user %}
+                    for {{current_user.first_name}}
+                {% endif %}
+                !</h2>
+            </div>
+            <div class="flex margin">
+                <form action="/categories_page">
+                    <input type="submit" name="Categories" value="Categories" class="button click margin">
+                </form>
+                <form action="/logout">
+                    <input type="submit" name="Logout" value="Logout" class="button click margin">
+                </form>
+            </div>
+        </header>
+        <div class="flex padding">
+            <table class="table table-bordered table-hover">
+                <tr class="text-warning bg-secondary">
+                    <td></td>
+                    <td>Exercise</td>
+                    <td>Muscle Type</td>
+                    <td>Sets</td>
+                    <td>Reps</td>
+                    <td>Actions</td>
+                </tr>
+                {% for x in workouts: %}
+                    <tr>
+                        <td>
+                            <img src="/static/img/{{x['type']}}/{{x.exercise['image']}}" style="width:100px;height:100px;">
+                        </td>
+                        <td>{{ x["name"] }}</td>
+                        <td>{{ x["type"] }}</td>
+                        <td>{{ x["sets"] }}</td>
+                        <td>{{ x["reps"] }}</td>
+                        <td>
+                            <a href='/exercise/remove/{{x.id}}'>Remove Exercise</a>
+                        </td>
+                        
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <form action="/clear_workout">
+            <input class="button click margin" type="submit" value="Clear Workout">
+        </form>
+    </div>
+</body>
+</html>

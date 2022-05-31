@@ -1,0 +1,75 @@
+.container {
+    width: 1200px;
+    min-height: 800px;
+    margin: auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #33393e;
+    color: white;
+}
+header {
+    padding: 0px 25px;
+    font-size: x-large;
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.294);
+    z-index: 1;
+}
+.main_page {
+    display: flex;
+    justify-content: center;
+    font-size: larger;
+    margin: auto;
+}
+footer {
+    background-color: #c1c1c1;
+    border: 2px solid #33393e;
+    height: 50px;
+    width: 1196px;
+    position: fixed;
+    bottom: 0;
+}
+.flex {
+    display: flex;
+    justify-content: space-around;
+    vertical-align: top;
+}
+.column1 {
+    flex: 1;
+    padding-top: 500px 0px;
+}
+.column2 {
+    flex: 4;
+}
+input[type='number']{
+    margin: 12px;
+    height: 20px;
+    width: 80px;
+}
+.margin
+{
+    margin: 10px;
+}
+.padding, td{
+    padding: 20px 40px;
+}
+.box {
+    color: #33393e;
+    margin: 20px 0px 20px 100px;
+    background-color: rgb(255, 255, 255);
+}
+li {
+    font-weight: bold;
+    margin: 4em;
+    font-size: larger;
+    list-style: none;
+}
+a {
+    color: white;
+    text-decoration: none;
+}
+.selected {
+    font-size:x-large;
+    text-align: center;
+    padding: 15px;
+    background-color: yellow;
+    color: #33393e;
+}

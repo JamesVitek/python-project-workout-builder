@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories</title>
+    <!-- <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='css/main.css') }}"> -->
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+    <div class="container">
+        <header class="flex padding">
+            <!-- Headder of Page -->
+            <div>
+                <h1>Categories Page</h1>
+                <h2>Hello
+                {% if current_user %}
+                    {{current_user.first_name}}
+                {% endif %}
+                !</h2>
+            </div>
+            <div class="flex margin">
+                {% if current_user %}
+                    <form action="/workout_session">
+                        <input class="button click margin" type="submit" value="Workout Session">
+                    </form>
+                    <form action="/logout">
+                        <input type="submit" name="Logout" value="Logout" class="button click margin">
+                    </form>
+                {% else %}
+                    <form action="/login_page">
+                        <input type="submit" name="login" value="Login" class="button click margin">
+                    </form>
+                {% endif %}
+            </div>
+        </header>
+        <!-- Body Two Flex boxes -->
+        <div class="flex padding">
+            <!--  Categories -->
+            <div class="column1">
+                <h2><a href="/categories">Categories</a></h2>
+                <div>
+                    <ul>
+                        <li><a href="/muscle_group/Chest">Chest</a></li>
+                        <li><a href="/muscle_group/Back">Back</a></li>
+                        <li><a href="/muscle_group/Legs">Legs</a></li>
+                        <li><a href="/muscle_group/Arms">Arms</a></li>
+                        <li><a href="/muscle_group/Core">Core</a></li>
+                        <li><a href="/muscle_group/Shoulders">Shoulders</a></li>
+                        <li><a href="/muscle_group/Cardio">Cardio</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Workout Helpful Information -->
+            <div class="column2">
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
